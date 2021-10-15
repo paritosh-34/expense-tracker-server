@@ -3,6 +3,7 @@ import express from 'express';
 import logger from '@logger';
 import connectDb from '@db/connect';
 
+// TODO: use tsconfig paths
 dotenv.config();
 
 const app = express();
