@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import express from 'express';
-
 import log from '@logger';
 import connectDb from '@db/connect';
 

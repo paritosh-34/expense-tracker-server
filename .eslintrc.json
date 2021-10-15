@@ -40,7 +40,7 @@
                     "builtin",
                     "external",
                     "internal"
-                ],
+                ]
                 // "pathGroups": [
                 //     {
                 //         "pattern": "@*/",
@@ -48,7 +48,7 @@
                 //         "position": "after"
                 //     }
                 // ],
-                "newlines-between": "always"
+                // "newlines-between": "always"
             }
         ]
     },
