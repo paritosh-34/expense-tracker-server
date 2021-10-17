@@ -56,6 +56,7 @@ const main = async () => {
 
   // routes
   app.use('/auth', routes.auth);
+  app.use('/expense', routes.expense);
 
   // clear expired sessions
   clearExpiredSessions();
