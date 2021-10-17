@@ -8,7 +8,6 @@ const connectDb = async (): Promise<void> => {
     logger.error('MongoUri not found!');
     process.exit(1);
   }
-  logger.info(dbUri);
 
   try {
     await mongoose.connect(dbUri);
