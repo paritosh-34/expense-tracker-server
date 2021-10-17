@@ -1,16 +1,12 @@
 import argon2 from 'argon2';
-import { model, Schema, Types, Document } from 'mongoose';
+import { model, Schema, Document } from 'mongoose';
 
-export interface UserInput {
+interface IUser {
   firstName: string;
   lastName: string;
   phone: string;
   email: string;
   password: string;
-}
-
-export interface UserDocument extends UserInput {
-  _id: Types.ObjectId;
   fullName: string;
   comparePassword: (candidatePassword: string) => Promise<boolean>;
 }
@@ -41,11 +37,11 @@ const userSchema: Schema = new Schema({
 
 userSchema.index({ phone: 1 });
 
-userSchema.virtual('fullName').get(function (this: UserDocument) {
+userSchema.virtual('fullName').get(function (this: IUser) {
   return `${this.firstName} ${this.lastName}`;
 });
 
-userSchema.pre<UserDocument & Document>('save', async function (next) {
+userSchema.pre<IUser & Document>('save', async function (next) {
   if (this.isModified('password')) {
     const hash = await argon2.hash(this.password);
     this.password = hash;
@@ -54,8 +50,8 @@ userSchema.pre<UserDocument & Document>('save', async function (next) {
   next();
 });
 
-userSchema.methods.comparePassword = function (this: UserDocument, candidatePassword: string) {
+userSchema.methods.comparePassword = function (this: IUser, candidatePassword: string) {
   return argon2.verify(this.password, candidatePassword);
 };
 
-export default model<UserDocument>('User', userSchema);
+export default model<IUser>('User', userSchema);

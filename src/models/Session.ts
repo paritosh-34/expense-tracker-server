@@ -1,6 +1,6 @@
 import { model, Schema, Types } from 'mongoose';
 
-export interface SessionInput {
+interface ISession {
   userId: Types.ObjectId;
   expiryDate: Date;
 }
@@ -16,8 +16,4 @@ const sessionSchema = new Schema({
   },
 });
 
-export interface SessionDocument extends SessionInput {
-  _id: Types.ObjectId;
-}
-
-export default model<SessionDocument>('Session', sessionSchema);
+export default model<ISession>('Session', sessionSchema);

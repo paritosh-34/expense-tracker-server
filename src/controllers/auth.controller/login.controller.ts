@@ -37,6 +37,7 @@ const login = async (req: Request<{}, {}, ILogin>, res: Response<customResponse>
 
     // store a session
     const session = new Session({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       userId: user._id,
       expiryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     });

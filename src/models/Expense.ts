@@ -1,6 +1,6 @@
-import { model, Schema, Types } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-export interface ExpenseInput {
+export interface IExpense {
   date: Date;
   title: string;
   expense: number;
@@ -26,8 +26,4 @@ const expenseSchema = new Schema({
   },
 });
 
-export interface ExpenseDocument extends ExpenseInput {
-  _id: Types.ObjectId;
-}
-
-export default model<ExpenseInput>('Expense', expenseSchema);
+export default model<IExpense>('Expense', expenseSchema);
