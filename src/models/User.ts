@@ -1,5 +1,5 @@
 import argon2 from 'argon2';
-import { model, Document, Schema, Types } from 'mongoose';
+import { model, Schema, Types, Document } from 'mongoose';
 
 export interface UserInput {
   firstName: string;
@@ -9,7 +9,7 @@ export interface UserInput {
   password: string;
 }
 
-export interface UserDocument extends UserInput, Document {
+export interface UserDocument extends UserInput {
   _id: Types.ObjectId;
   fullName: string;
   comparePassword: (candidatePassword: string) => Promise<boolean>;
@@ -45,7 +45,7 @@ userSchema.virtual('fullName').get(function (this: UserDocument) {
   return `${this.firstName} ${this.lastName}`;
 });
 
-userSchema.pre<UserDocument>('save', async function (next) {
+userSchema.pre<UserDocument & Document>('save', async function (next) {
   if (this.isModified('password')) {
     const hash = await argon2.hash(this.password);
     this.password = hash;
