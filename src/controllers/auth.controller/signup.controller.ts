@@ -13,7 +13,7 @@ const signup = async (req: Request<{}, {}, ISignup>, res: Response<customRespons
   try {
     await validateSchema(req, signupSchema);
 
-    const { firstName, lastName, email, phone, password } = req.body;
+    const { phone } = req.body;
 
     const checkIfExists = await User.find({ phone });
 
@@ -24,13 +24,7 @@ const signup = async (req: Request<{}, {}, ISignup>, res: Response<customRespons
         message: 'User not found',
       });
 
-    const user = new User({
-      firstName,
-      lastName,
-      email,
-      phone,
-      password,
-    });
+    const user = new User(req.body);
     await user.save();
 
     // get tokens
