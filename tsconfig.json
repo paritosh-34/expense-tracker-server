@@ -96,7 +96,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "webpack.config.js"
+    "webpack.config.js",
+    "src/scripts/*.js"
   ],
   "exclude": [
     "node_modules"

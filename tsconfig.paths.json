@@ -2,8 +2,41 @@
   "compilerOptions": {
     "baseUrl": "./src", /* Specify the base directory to resolve non-relative module names. */
     "paths": {
-      "@*": [
-        "./*"
+      "@controllers/*": [
+        "./controllers/*"
+      ],
+      "@db/*": [
+        "./db/*"
+      ],
+      "@interfaces/*": [
+        "./interfaces/*"
+      ],
+      "@joiSchemas/*": [
+        "./joiSchemas/*"
+      ],
+      "@logger": [
+        "./logger/index"
+      ],
+      "@logger/*": [
+        "./logger/*"
+      ],
+      "@models/*": [
+        "./models/*"
+      ],
+      "@routes/*": [
+        "./routes/*"
+      ],
+      "@scripts/*": [
+        "./scripts/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@config": [
+        "./config/index"
+      ],
+      "@config/*": [
+        "./config/*"
       ]
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
   }

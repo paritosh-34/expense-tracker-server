@@ -22,6 +22,13 @@ module.exports = {
     alias: {
       '@logger': path.resolve(__dirname, 'src/logger'),
       '@db': path.resolve(__dirname, 'src/db'),
+      '@controllers': path.resolve(__dirname, 'src/controllers'),
+      '@interfaces': path.resolve(__dirname, 'src/interfaces'),
+      '@joiSchemas': path.resolve(__dirname, 'src/joiSchemas'),
+      '@models': path.resolve(__dirname, 'src/models'),
+      '@routes': path.resolve(__dirname, 'src/routes'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@config': path.resolve(__dirname, 'src/config'),
     },
     extensions: ['.ts'],
   },

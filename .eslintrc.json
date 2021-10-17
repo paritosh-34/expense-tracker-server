@@ -14,10 +14,7 @@
     "parserOptions": {
         "ecmaVersion": 12,
         "sourceType": "module",
-        "project": [
-            "./tsconfig.json",
-            "./webpack.config.js"
-        ]
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "@typescript-eslint",
@@ -33,22 +30,72 @@
                 "js": "never"
             }
         ],
+        "no-underscore-dangle": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "func-names": "off",
         "import/order": [
             "error",
             {
                 "groups": [
                     "builtin",
                     "external",
-                    "internal"
+                    "internal",
+                    "sibling",
+                    "unknown"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "express",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@config/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@logger/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@db/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@routes/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@scripts/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@models/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@utils/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@joiSchemas/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "@interfaces/*",
+                        "group": "internal",
+                        "position": "after"
+                    }
                 ]
-                // "pathGroups": [
-                //     {
-                //         "pattern": "@*/",
-                //         "group": "internal",
-                //         "position": "after"
-                //     }
-                // ],
-                // "newlines-between": "always"
             }
         ]
     },
