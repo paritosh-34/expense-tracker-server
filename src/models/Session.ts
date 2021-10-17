@@ -1,16 +1,11 @@
-import { model, Schema, Types } from 'mongoose';
+import { Document, model, Schema, Types } from 'mongoose';
 
-export interface SessionDocument {
-  refreshToken: string;
+export interface SessionInput {
   userId: Types.ObjectId;
   expiryDate: Date;
 }
 
 const sessionSchema = new Schema({
-  refreshToken: {
-    type: String,
-    required: true,
-  },
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -21,6 +16,8 @@ const sessionSchema = new Schema({
   },
 });
 
-sessionSchema.index({ refreshToken: 1 });
+export interface SessionDocument extends SessionInput, Document {
+  _id: Types.ObjectId;
+}
 
 export default model<SessionDocument>('Session', sessionSchema);

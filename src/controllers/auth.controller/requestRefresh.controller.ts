@@ -14,9 +14,7 @@ const requestRefresh = async (req: Request, res: Response<customResponse>) => {
         message: 'Session not found',
       });
 
-    const session = await Session.findOne({
-      refreshToken,
-    });
+    const session = await Session.findById(refreshToken);
 
     if (!session)
       return res.status(401).send({

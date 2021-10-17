@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import { NextFunction, Request, Response } from 'express';
 import { JsonWebTokenError, sign, verify } from 'jsonwebtoken';
 import { Types } from 'mongoose';
@@ -12,8 +11,6 @@ const getSecret = () => {
 
   return secret;
 };
-
-const generateRefreshToken = (): string => crypto.randomBytes(16).toString('base64');
 
 const generateAccessToken = (userId: Types.ObjectId): string =>
   sign({ userId }, getSecret(), {
@@ -48,4 +45,4 @@ const authenticate = (req: Request, res: Response<customResponse>, next: NextFun
   }
 };
 
-export { generateRefreshToken, generateAccessToken, authenticate };
+export { generateAccessToken, authenticate };

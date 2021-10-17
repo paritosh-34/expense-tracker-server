@@ -3,7 +3,7 @@ import User from '@models/User';
 import Session from '@models/Session';
 import handleErrs from '@utils/handleErrs.util';
 import validateSchema from '@utils/validateSchema.util';
-import { generateAccessToken, generateRefreshToken } from '@utils/auth.util';
+import { generateAccessToken } from '@utils/auth.util';
 import { signupSchema } from '@joiSchemas/auth.schema';
 import customResponse from '@interfaces/response.interface';
 import { ISignup } from '@interfaces/auth.schema';
@@ -34,19 +34,17 @@ const signup = async (req: Request<{}, {}, ISignup>, res: Response<customRespons
     await user.save();
 
     // get tokens
-    const refreshToken = generateRefreshToken();
     const accessToken = generateAccessToken(user._id);
 
     // store a session
     const session = new Session({
-      refreshToken,
       userId: user._id,
       expiryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     });
     await session.save();
 
     // set cookies
-    res.cookie('__refresh__token', refreshToken, {
+    res.cookie('__refresh__token', session._id, {
       httpOnly: true,
       sameSite: 'none',
       secure: true,

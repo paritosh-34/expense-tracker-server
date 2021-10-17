@@ -12,9 +12,7 @@ const logout = async (req: Request, res: Response<customResponse>) => {
     });
   }
 
-  await Session.findOneAndRemove({
-    refreshToken,
-  });
+  await Session.findByIdAndRemove(refreshToken);
 
   return res
     .status(200)
