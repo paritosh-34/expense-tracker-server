@@ -2,7 +2,6 @@ import { Document, model, Schema, Types } from 'mongoose';
 
 export interface ExpenseInput {
   date: Date;
-  name: string;
   title: string;
   expense: number;
   state: string;
@@ -11,10 +10,6 @@ export interface ExpenseInput {
 const expenseSchema = new Schema({
   date: {
     type: Date,
-    required: true,
-  },
-  name: {
-    type: String,
     required: true,
   },
   title: {
