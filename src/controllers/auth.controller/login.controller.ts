@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import logger from '@logger';
 import Session from '@models/Session';
 import User from '@models/User';
 import handleErrs from '@utils/handleErrs.util';
@@ -18,9 +17,6 @@ const login = async (req: Request<{}, {}, ILogin>, res: Response<customResponse>
 
     const user = await User.findOne({ phone });
 
-    logger.info('yoo checkkkk');
-
-    logger.debug(user!, 'check');
     // check if user exists
     if (!user)
       return res.status(404).send({
