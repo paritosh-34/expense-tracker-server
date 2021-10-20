@@ -7,7 +7,7 @@ const clearExpiredSessions = () => {
       $lt: new Date(),
     },
   })
-    .then((r) => logger.debug(String(r.deletedCount)))
+    .then((r) => logger.info(String(r.deletedCount)))
     .catch((e) => logger.error(e as Error, 'Error while clearing sessions'));
 };
 
