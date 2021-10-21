@@ -4,7 +4,7 @@
  */
 
 export interface IExpense {
-  data: Date;
+  date: Date;
   expense: number;
   state: string;
   title: string;
