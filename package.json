@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "prepare": "husky install",
-    "start": "npm run build && node dist/index.js",
+    "start": "node dist/index.js",
     "watch": "webpack watch --mode development",
     "build": "webpack",
     "dev": "nodemon dist/index.js",
