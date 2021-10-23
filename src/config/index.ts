@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { CorsOptions } from 'cors';
 
 interface IConfig {
@@ -23,12 +22,7 @@ const prodConfig: IConfig = {
 };
 
 const loadConfig = () => {
-  const isProd = process.env.NODE_ENV === 'production';
-
-  console.log(process.env.NODE_ENV);
-  console.log(process.env.SECRET_KEY);
-  console.log(process.env.SIGNUP_SECRET);
-  console.log(process.env.MONGO_URI);
+  const isProd = process.env.MY_ENV === 'production';
 
   return isProd ? prodConfig : localConfig;
 };
