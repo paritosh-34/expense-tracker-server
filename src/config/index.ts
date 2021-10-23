@@ -1,4 +1,5 @@
 import { CorsOptions } from 'cors';
+import logger from '@logger';
 
 interface IConfig {
   morganFormat: 'dev' | 'tiny';
@@ -20,6 +21,8 @@ const prodConfig: IConfig = {
     credentials: true,
   },
 };
+
+logger.info(process.env.NODE_ENV || 'undefined bro');
 
 const isProd = process.env.NODE_ENV === 'production';
 const config = isProd ? prodConfig : localConfig;
