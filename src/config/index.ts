@@ -22,7 +22,7 @@ const prodConfig: IConfig = {
   },
 };
 
-logger.info(process.env.NODE_ENV || 'undefined bro');
+logger.info(`this --> ${process.env.NODE_ENV || 'undefined bro'}`);
 
 const isProd = process.env.NODE_ENV === 'production';
 const config = isProd ? prodConfig : localConfig;
