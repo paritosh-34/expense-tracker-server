@@ -61,6 +61,7 @@
     "src/**/*.+(js|jsx|ts|tsx|json|css|scss)": "prettier --write"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.11.1",
+    "yarn": "1.22.11"
   }
 }
