@@ -16,7 +16,7 @@ const localConfig: IConfig = {
 const prodConfig: IConfig = {
   morganFormat: 'tiny',
   corsOrigin: {
-    origin: 'https://yogik.com',
+    origin: 'https://sayy-expensetracker.vercel.app',
     credentials: true,
   },
 };
