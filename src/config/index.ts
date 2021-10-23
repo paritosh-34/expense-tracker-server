@@ -1,5 +1,5 @@
+/* eslint-disable no-console */
 import { CorsOptions } from 'cors';
-import logger from '@logger';
 
 interface IConfig {
   morganFormat: 'dev' | 'tiny';
@@ -22,9 +22,15 @@ const prodConfig: IConfig = {
   },
 };
 
-logger.info(`this --> ${process.env.NODE_ENV || 'undefined bro'}`);
+const loadConfig = () => {
+  const isProd = process.env.NODE_ENV === 'production';
 
-const isProd = process.env.NODE_ENV === 'production';
-const config = isProd ? prodConfig : localConfig;
+  console.log(process.env.NODE_ENV);
+  console.log(process.env.SECRET_KEY);
+  console.log(process.env.SIGNUP_SECRET);
+  console.log(process.env.MONGO_URI);
 
-export default config;
+  return isProd ? prodConfig : localConfig;
+};
+
+export default loadConfig;

@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
-import config from '@config';
+import loadConfig from '@config';
 import logger from '@logger';
 import connectDb from '@db/connect';
 import routes from '@routes/index';
@@ -15,33 +15,14 @@ dotenv.config();
 
 const app = express();
 
-// cors
-// const whitelist = ['http://localhost:3000', 'https://stockman.vercel.app'];
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       // allow requests with no origin
-//       // if (!origin) return callback(null, true);
-
-//       const message =
-//         "The CORS policy for this origin doesn't allow access from the particular origin.";
-
-//       if (!origin) return callback(new Error(message), false);
-
-//       if (whitelist.indexOf(origin) === -1) {
-//         return callback(new Error(message), false);
-//       }
-//       return callback(null, true);
-//     },
-//     credentials: true,
-//   })
-// );
-app.use(cors(config.corsOrigin));
-
 const main = async () => {
   const PORT = process.env.PORT || 5000;
 
   await connectDb();
+  const config = loadConfig();
+
+  // cors
+  app.use(cors(config.corsOrigin));
 
   // parsers
   app.use(express.json());
